@@ -1,34 +1,96 @@
 @extends('layout.tenantLayout')
 @section('content')
-<div id="carousel-id" class="carousel slide" data-ride="carousel">
-		<ol class="carousel-indicators">
-			<li data-target="#carousel-id" data-slide-to="0" class=""></li>
-			<li data-target="#carousel-id" data-slide-to="1" class=""></li>
-			<li data-target="#carousel-id" data-slide-to="2" class="active"></li>
-		</ol>
-		<div class="carousel-inner">
-			<div class="item active">
-				<img src="images/bg.jpg"alt="First slide" >
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>Your life, your choice</h1>
-						<p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-					</div>
+<section id="home">
+		
+		<div id="main-carousel" class="carousel slide" data-ride="carousel"> 
+			<ol class="carousel-indicators">
+				<li data-target="#main-carousel" data-slide-to="0" class="active"></li>
+				<li data-target="#main-carousel" data-slide-to="1"></li>
+				<li data-target="#main-carousel" data-slide-to="2"></li>
+			</ol><!--/.carousel-indicators--> 
+			<div class="carousel-inner">
+				<div class="item active" style="background-image: url(../images/tenant/slide1.jpg)"> 
+					<div class="carousel-caption"> 
+						<div> 
+							<h2 class="heading animated bounceInDown">Welcome to Majent</h2> 
+							<p class="animated bounceInUp">Change the world with us</p> 
+
+							<button type="button" class="btn btn-default slider-btn animated fadeIn" data-toggle="modal" data-target="#buttonModal">Get Started</button> 
+						</div> 
+					</div> 
 				</div>
+				
+				<div class="item" style="background-image: url(../images/tenant/slide2.jpeg)"> 
+					<div class="carousel-caption"> <div> 
+						<h2 class="heading animated bounceInDown">budget?</h2> 
+						<p class="animated bounceInUp">Let us give you great and flexible deal.</p> <button type="button" class="btn btn-default slider-btn animated fadeIn" data-toggle="modal" data-target="#buttonModal">Get Started</button>  
+					</div> 
+				</div> 
+			</div>  
+			<div class="item" style="background-image: url(../images/tenant/slide3.jpeg)"> 
+				<div class="carousel-caption"> 
+					<div> 
+						<h2 class="heading animated bounceInRight">We care</h2> 
+						<p class="animated bounceInLeft">Let us grow together</p> 
+						<button type="button" class="btn btn-default slider-btn animated fadeIn" data-toggle="modal" data-target="#buttonModal">Get Started</button> 					</div> 
+				</div> 
 			</div>
-			<div class="item">
-				<img data-src="holder.js/900x500/auto/#666:#6a6a6a/text:Second slide" alt="Second slide" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzY2NiI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjQ1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojNmE2YTZhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjU2cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+U2Vjb25kIHNsaWRlPC90ZXh0Pjwvc3ZnPg==">
-				<div class="container">
-					<div class="carousel-caption">
-						<h1>Another example headline.</h1>
-						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-						<p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-		<a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-	</div>
-	
+		</div><!--/.carousel-inner-->
+
+		<a class="carousel-left member-carousel-control hidden-xs" href="#main-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+		<a class="carousel-right member-carousel-control hidden-xs" href="#main-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
+	</div> 
+
+<!--MODAL-->
+<div class="modal fade" id="buttonModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content modal-col-green">
+            {{ Form::open([
+              'id' => 'myForm', 'class' => 'form-horizontal'
+              ])
+            }}
+            <div class="modal-header">
+              <h1 id='label' class="modal-title align-center p-b-15">LOGIN<a href="" class="pull-right" data-dismiss="modal"><i class="mdi-navigation-close"></i></a></h1>
+            </div>
+            <div class="modal-body">
+              <div class="form-group p-l-30 p-b-10">
+                <div class="col-sm-12 col-md-12">
+                  <div class="form-line">
+                    <h5 class="card-inside-title">Username</h5>
+                    {{ Form::text('username',null,[
+                      'id'=> 'username', 'required' => 'required',
+                      'class' => 'form-control'])}}
+                  </div>
+                </div>
+                </div>
+                <div class="form-group p-l-30 p-b-10">
+                <div class="col-sm-12 col-md-12">
+                  <div class="form-line">
+                    <h5 class="card-inside-title">Password</h5>
+                    {{ Form::text('password',null,[
+                      'id'=> 'password', 'required' => 'required',
+                      'class' => 'form-control'])}}
+                  </div>
+                </div>               
+              </div>
+            </div>
+            
+         
+          <div class="modal-footer">
+          
+           <button type="submit" class="btn btn-SM bg-brown waves-effect waves-white col-md-12 col-sm-12" id="btnSave" value="add"><i class="mdi-content-save"></i><span id='lblButton'> SAVE</span></button>
+
+           {{ Form::hidden(null,null,[
+            'id'=> 'myId'
+            ])
+          }}
+        
+        </div>
+        {{Form::close()}}
+      </div>
+    </div>
+  </div>
+
+</section><!--/#home-->
+
 @endsection

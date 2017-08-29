@@ -190,13 +190,13 @@
           ])
         }}
         <div class="modal-header">
-          <h1 id="label" class="modal-title align-center p-b-15">NEW FLOOR<a href="" class="pull-right" data-dismiss="modal"><i class="mdi-navigation-close"></i></a></h1>
+          <h1 id="label" class="modal-title p-b-15">NEW FLOOR<a href="" class="pull-right" data-dismiss="modal"><i class="mdi-navigation-close"></i></a></h1>
         </div>
         <div class="modal-body">
           <div class="form-group p-l-30 p-b-10">
             <div class="form-line">
               <h5 class="card-inside-title">Building Name</h5>
-              <select required id="comBuilding" name="comBuilding" class="form-control show-tick align-center">
+              <select required id="comBuilding" name="comBuilding" class="form-control show-tick">
               </select>
             </div>
           </div>
@@ -206,7 +206,7 @@
               {{ Form::number('txtFNum',null,[
                 'id'=> 'txtFNum',
                 'readonly' => '',
-                'class' => 'form-control text-center',
+                'class' => 'form-control',
                 'required' => 'required',
                 ])
               }}
@@ -220,7 +220,7 @@
                 'autocomplete' => 'off',
                 'min' => '1',
                 'max' => '99',
-                'class' => 'form-control text-center max-digits-2',
+                'class' => 'form-control max-digits-2',
                 'required' => 'required',
                 ])
               }}
