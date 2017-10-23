@@ -69,7 +69,8 @@
 
 __webpack_require__(1);
 __webpack_require__(7);
-module.exports = __webpack_require__(8);
+__webpack_require__(8);
+module.exports = __webpack_require__(9);
 
 
 /***/ }),
@@ -77,22 +78,20 @@ module.exports = __webpack_require__(8);
 /***/ (function(module, exports, __webpack_require__) {
 
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes React and other helpers. It's a great starting point while
- * building robust, powerful web applications using React + Laravel.
- */
-//d
 __webpack_require__(2);
 __webpack_require__(5);
 __webpack_require__(6);
-/**
- * Next, we will create a fresh React component instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+/*
+window.Vue = require('vue');
 
-//require('./components/Example');
+
+
+Vue.component('example', require('./components/Example.vue'));
+
+const app = new Vue({
+    el: '#app'
+});
+*/
 
 /***/ }),
 /* 2 */
@@ -13747,6 +13746,12 @@ $(function () {
 
 /***/ }),
 /* 8 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

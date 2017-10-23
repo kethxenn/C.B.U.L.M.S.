@@ -7,96 +7,9 @@
     <title>Majent</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {!!Html::style("css/bootstrap.min.css")!!}
-    {!!Html::style("semantic/semantic/semantic.min.css")!!}
-    <style type="text/css">
-
-    .hidden.menu {
-      display: none;
-    }
-
-    .masthead.segment {
-      min-height: 700px;
-      padding: 1em 0em;
-    }
-    .masthead .logo.item img {
-      margin-right: 1em;
-    }
-    .masthead .ui.menu .ui.button {
-      margin-left: 0.5em;
-    }
-    .masthead h1.ui.header {
-      margin-top: 3em;
-      margin-bottom: 0em;
-      font-size: 4em;
-      font-weight: normal;
-    }
-    .masthead h2 {
-      font-size: 1.7em;
-      font-weight: normal;
-    }
-
-    .ui.vertical.stripe {
-      padding: 8em 0em;
-    }
-    .ui.vertical.stripe h3 {
-      font-size: 2em;
-    }
-    .ui.vertical.stripe .button + h3,
-    .ui.vertical.stripe p + h3 {
-      margin-top: 3em;
-    }
-    .ui.vertical.stripe .floated.image {
-      clear: both;
-    }
-    .ui.vertical.stripe p {
-      font-size: 1.33em;
-    }
-    .ui.vertical.stripe .horizontal.divider {
-      margin: 3em 0em;
-    }
-
-    .quote.stripe.segment {
-      padding: 0em;
-    }
-    .quote.stripe.segment .grid .column {
-      padding-top: 5em;
-      padding-bottom: 5em;
-    }
-
-    .footer.segment {
-      padding: 5em 0em;
-    }
-
-    .secondary.pointing.menu .toc.item {
-      display: none;
-    }
-
-    @media only screen and (max-width: 700px) {
-      .ui.fixed.menu {
-        display: none !important;
-      }
-      .secondary.pointing.menu .item,
-      .secondary.pointing.menu .menu {
-        display: none;
-      }
-      .secondary.pointing.menu .toc.item {
-        display: block;
-      }
-      .masthead.segment {
-        min-height: 350px;
-      }
-      .masthead h1.ui.header {
-        font-size: 2em;
-        margin-top: 1.5em;
-      }
-      .masthead h2 {
-        margin-top: 0.5em;
-        font-size: 1.5em;
-      }
-    }
-
-
-  </style>
+    {!!Html::style("semantic/semantic.min.css")!!}
+    {!!Html::style("plugins/jquery-steps/jquery.steps.css")!!}
+    {!!Html::style("css/landingpage.css")!!}
   </head>
   <body>
 
@@ -128,6 +41,8 @@
       </h1>
       <h2>Do whatever you want when you want to.</h2>
       <div id = 'test' class="ui huge primary button">Inquire now <i class="right arrow icon"></i></div>
+      <div id = 'hi'>
+  </div>
     </div>
 
   </div>
@@ -215,17 +130,15 @@
     </div>
   </div>
 </div>
+
 @include('partials._inquiryModal')
 
     <script src="/js/jquery.min.js" type="text/javascript"></script>
     <script src="/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="/semantic/semantic/semantic.min.js" type="text/javascript"></script>
+    <script src="/semantic/semantic.min.js" type="text/javascript"></script>
+    <script src="/plugins/jquery-steps/jquery.steps.min.js" type="text/javascript"></script>
+    <script src = "/js/landingpage.js" type = "text/javascript"></script>
     <script type="text/javascript">
-      $(document).ready(function(){
-  $("#test").click(function(){
-  $('#modal').modal('show');
-  });
-});
     urlfloor="{{route("buildings.storefloor")}}";
     </script>
   </body>
