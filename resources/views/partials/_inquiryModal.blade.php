@@ -1,4 +1,4 @@
-<div class="ui modal" id='modal'>
+<div class="ui large modal" id='modal'>
   <i class="close icon"></i>
   <div class="ui header">
     <div class="ui ordered steps">
@@ -23,25 +23,64 @@
     </div>
   </div>
   <div class="scrollable content">
-    <div id = 'form1'>
-      <form id="aFormWizard" class = 'ui form'>
+    <div id = 'container1'>
+      <form id="aFormWizard" class = 'ui form' id ='form1'>
         <h3>form 1</h3>
-      <section>
-        <div class="fields">
-          <div class="seven wide field">
-            <label>E-mail</label>
-            <input type="text" name="email">
+        <section>
+          <div class="fields">
+            <div class="seven wide field">
+              <label>E-mail</label>
+              <input type="text" name="email">
+            </div>
+            <div class="five wide field">
+              <label>Additional E-mail</label>
+              <input type="text" name="cc-email">
+            </div>
+            <div class="four wide field">
+              <label>Gender</label>
+              <div class="ui selection dropdown">
+                <input type="hidden" name="gender">
+                <div class="default text">Gender</div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <div class="item" data-value="1">Male</div>
+                  <div class="item" data-value="0">Female</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="five wide field">
-            <label>Additional E-mail</label>
-            <input type="text" name="cc-email">
+          <div class="ui error message"></div>
+        </section>
+      </form>
+    </div>
+    <div id = 'container2' style = "display:none">
+      <form class="ui form segment" id='form2'>
+        <p>Tell Us About Yourself</p>
+        <div class="three fields">
+          <div class="required field">
+            <label>First Name</label>
+            <input placeholder="First Name" name="first-name" type="text">
           </div>
-          <div class="four wide field">
+          <div class="field">
+            <label>Middle Name</label>
+            <input placeholder="Middle Name" name="middle-name" type="text">
+          </div>
+          <div class="required field">
+            <label>Last Name</label>
+            <input placeholder="Last Name" name="last-name" type="text">
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="twelve wide required field">
+            <label>Email</label>
+            <input placeholder="Email Address" name="email" type="text">
+          </div>
+          <div class="four wide required field">
             <label>Gender</label>
             <div class="ui selection dropdown">
               <input type="hidden" name="gender">
-              <div class="default text">Gender</div>
               <i class="dropdown icon"></i>
+              <div class="default text">Gender</div>
               <div class="menu">
                 <div class="item" data-value="1">Male</div>
                 <div class="item" data-value="0">Female</div>
@@ -49,66 +88,47 @@
             </div>
           </div>
         </div>
-      </section>
-    </form>
-    </div>
-    <div id = 'form2' style = "display:none">
-      <form id="aFormWizard" class = 'ui form'>
-        <h3>form 2</h3>
-      <section>
-        <div class="fields">
-          <div class="seven wide field">
-            <label>E-mail</label>
-            <input type="text" name="email">
-          </div>
-          <div class="five wide field">
-            <label>Additional E-mail</label>
-            <input type="text" name="cc-email">
-          </div>
-          <div class="four wide field">
-            <label>Gender</label>
-            <div class="ui selection dropdown">
-              <input type="hidden" name="gender">
-              <div class="default text">Gender</div>
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                <div class="item" data-value="1">Male</div>
-                <div class="item" data-value="0">Female</div>
-              </div>
-            </div>
+        <div class="required field">
+          <label>Address</label>
+          <input placeholder="Address" name="address" type="text">
+        </div>
+        <div class="inline field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="terms">
+            <label>I agree to the terms and conditions</label>
           </div>
         </div>
-      </section>
-    </form>
+        <div class="ui error message"></div>
+      </form>
     </div>
-  <div id = 'form3' style = "display:none">
-      <form id="aFormWizard" class = 'ui form'>
+    <div id = 'container3' style = "display:none">
+      <form id="aFormWizard" class = 'ui form' id= 'form3'>
         <h3>form 3</h3>
-      <section>
-        <div class="fields">
-          <div class="seven wide field">
-            <label>E-mail</label>
-            <input type="text" name="email">
-          </div>
-          <div class="five wide field">
-            <label>Additional E-mail</label>
-            <input type="text" name="cc-email">
-          </div>
-          <div class="four wide field">
-            <label>Gender</label>
-            <div class="ui selection dropdown">
-              <input type="hidden" name="gender">
-              <div class="default text">Gender</div>
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                <div class="item" data-value="1">Male</div>
-                <div class="item" data-value="0">Female</div>
+        <section>
+          <div class="fields">
+            <div class="seven wide field">
+              <label>E-mail</label>
+              <input type="text" name="email">
+            </div>
+            <div class="five wide field">
+              <label>Additional E-mail</label>
+              <input type="text" name="cc-email">
+            </div>
+            <div class="four wide field">
+              <label>Gender</label>
+              <div class="ui selection dropdown">
+                <input type="hidden" name="gender">
+                <div class="default text">Gender</div>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <div class="item" data-value="1">Male</div>
+                  <div class="item" data-value="0">Female</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </form>
+        </section>
+      </form>
     </div>
   </div>
   <div class="actions">
@@ -116,7 +136,7 @@
       <i class="remove icon"></i>
       Cancel
     </div>
-    <div class="ui green ok inverted button" id ="btnNext">
+    <div class="ui green ok inverted button" id ="btnNext"'>
       <i class="angle double right icon"></i>
       Next
     </div>
