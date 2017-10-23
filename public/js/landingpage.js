@@ -156,15 +156,17 @@ function handleStep(isForward) {
 	} else if (step == 1 && !isForward) {
 		$('#modal').modal('hide');
 	} else {
+		var t = '#form' + step;
 		if (isForward) {
 			//check if form step is valid
-			var t = '#form' + step;
 			if ($(t).form('is valid')) {
 				updateStepUI(true);
 			} else {
 				$(t).form('validate form');
 			}
 		} else {
+			//$(t).form('reset');
+			$('.ui.error.message').html('');
 			updateStepUI(false);
 		}
 	}

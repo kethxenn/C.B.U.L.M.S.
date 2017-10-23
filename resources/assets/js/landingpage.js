@@ -87,46 +87,48 @@ function handleStep(isForward){
 	}else if(step==1&&(!isForward)){
 		$('#modal').modal('hide');
 	}else{
+		var t = '#form'+step;
 		if(isForward){
 			//check if form step is valid
-			var t = '#form'+step;
 			if($(t).form('is valid')){
 				updateStepUI(true);
 			}else{
 				$(t).form('validate form');
 			}
 		}else{
+			//$(t).form('reset');
+			$('.ui.error.message').html('');
 			updateStepUI(false);
 		}
 		
 	}
-	function updateStepUI(isForward){
-		if(isForward){
-			step++;
-		}else{
-			step--;
-		}
-		if(step==max){
-			document.getElementById('btnNext').innerHTML = submitButtonFormat;
-		}else{
-			document.getElementById('btnNext').innerHTML = nextButtonFormat;
-		}
-		if(step==1){
-			document.getElementById('btnBack').innerHTML = cancelButtonFormat;
-		}else{
-			document.getElementById('btnBack').innerHTML = backButtonFormat;
-		}
-		//alert(step);
-		for(var i=step-1;i>0;i--){
-			document.getElementById("step"+i).className = "completed step";
-			document.getElementById("container"+i).style.display = "none";
-		}
-		for(var i=step+1;i<=max;i++){
-			document.getElementById("step"+i).className = "step";
-			document.getElementById("container"+i).style.display = "none";
-		}
-		document.getElementById("step"+step).className = "active step";
-		document.getElementById("container"+step).style.display = "block";
+function updateStepUI(isForward){
+	if(isForward){
+		step++;
+	}else{
+		step--;
 	}
+	if(step==max){
+		document.getElementById('btnNext').innerHTML = submitButtonFormat;
+	}else{
+		document.getElementById('btnNext').innerHTML = nextButtonFormat;
+	}
+	if(step==1){
+		document.getElementById('btnBack').innerHTML = cancelButtonFormat;
+	}else{
+		document.getElementById('btnBack').innerHTML = backButtonFormat;
+	}
+	//alert(step);
+	for(var i=step-1;i>0;i--){
+		document.getElementById("step"+i).className = "completed step";
+		document.getElementById("container"+i).style.display = "none";
+	}
+	for(var i=step+1;i<=max;i++){
+		document.getElementById("step"+i).className = "step";
+		document.getElementById("container"+i).style.display = "none";
+	}
+	document.getElementById("step"+step).className = "active step";
+	document.getElementById("container"+step).style.display = "block";
+}
 	
 }
