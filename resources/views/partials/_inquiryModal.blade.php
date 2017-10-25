@@ -1,4 +1,4 @@
-<div class="ui large modal" id='modal'>
+<div class="ui fullscreen long modal" id='modal'>
   <i class="close icon"></i>
   <div class="ui header">
     <div class="ui ordered steps">
@@ -27,27 +27,13 @@
       <form id="aFormWizard" class = 'ui form' id ='form1'>
         <h3>form 1</h3>
         <section>
-          <div class="fields">
-            <div class="seven wide field">
-              <label>E-mail</label>
-              <input type="text" name="email">
-            </div>
-            <div class="five wide field">
-              <label>Additional E-mail</label>
-              <input type="text" name="cc-email">
-            </div>
-            <div class="four wide field">
-              <label>Gender</label>
-              <div class="ui selection dropdown">
-                <input type="hidden" name="gender">
-                <div class="default text">Gender</div>
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                  <div class="item" data-value="1">Male</div>
-                  <div class="item" data-value="0">Female</div>
-                </div>
-              </div>
-            </div>
+          <div class="ui container">
+            <table id = 'table-units' class ='ui stacked fluid compact table' cellspacing="0" width="100%">
+              <thead>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
           </div>
           <div class="ui error message"></div>
         </section>
@@ -89,7 +75,7 @@
           </div>
         </div>
         <div class="required field">
-          <label>Address</label>
+          <label>Company Address (Personal if not applicable)</label>
           <input placeholder="Address" name="address" type="text">
         </div>
         <div class="inline field">

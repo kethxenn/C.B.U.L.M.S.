@@ -22,6 +22,7 @@ class CreateUnitsTable extends Migration {
 			$table->integer('floor_id')->index('fk_floor_unit_idx');
 			$table->integer('number');
 			$table->boolean('is_active')->default(1);
+			$table->boolean('is_used')->default(0);
 			$table->char('picture', 40)->nullable();
 		});
 	}

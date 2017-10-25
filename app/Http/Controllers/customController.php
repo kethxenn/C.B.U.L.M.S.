@@ -20,7 +20,7 @@ use App\Payment;
 use Carbon\Carbon;
 use Config;
 use Auth;
-
+use Datatables;
 class customController extends Controller
 {
 	public function getCity($id)
@@ -193,6 +193,42 @@ class customController extends Controller
 		$user_balance->save();
         return response()->json(['message' => 'Account updated']);
 	}
+	public function getUnits()
+    {
+      $result=DB::table("units")
+      ->where('is_used',0)
+      ->where('is_active',1)
+      ->select(DB::Raw('Coalesce(price * units.size,1) as price,buildings.description as description,floors.number as floor_number,units.code as unit_code,units.type,units.size,units.id as id'))
+      ->join("floors","units.floor_id","floors.id")
+      ->join("buildings","floors.building_id","buildings.id")
+      ->join("building_types","buildings.building_type_id","building_types.id")
+      ->leftJoin('unit_prices','units.id','unit_prices.unit_id')
+      ->whereRaw("unit_prices.date_as_of=(SELECT MAX(unit_prices.date_as_of) from unit_prices where unit_id=units.id) or isnull(unit_prices.date_as_of)")
+      ->where("buildings.is_active",1)
+      ->get();
+      return Datatables::of($result)
+      ->addColumn('action', function ($data) {
+        return '<button class="ui right labeled icon blue button button-details" type="button" data-value="'.$data->id.'"><i class="right arrow icon"></i>See Details</button>';
+      })
+      ->editColumn('size', function ($data) {
+        return "$data->size sqm";
+      })
+      ->editColumn('price', function ($data) {
+        return "P $data->price / month";
+      })
+      ->editColumn('type', function ($data) {
+        $value = 'Raw';
+        if($data->type==1){
+          $value = 'Shell';
+        }
+        return $value;
+      })
+      ->setRowId(function ($data) {
+        return $data = 'id'.$data->id;
+      })
+      ->rawColumns(['is_active','action'])
+      ->make(true);
+    }
 }
 
 

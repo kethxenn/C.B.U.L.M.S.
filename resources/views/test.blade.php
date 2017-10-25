@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {!!Html::style("css/bootstrap.min.css")!!}
     {!!Html::style("semantic/semantic.min.css")!!}
-    {!!Html::style("plugins/jquery-steps/jquery.steps.css")!!}
+    {!!Html::style("plugins/landingpage/datatables.min.css")!!}
     {!!Html::style("css/landingpage.css")!!}
   </head>
   <body>
@@ -136,10 +136,10 @@
     <script src="/js/jquery.min.js" type="text/javascript"></script>
     <script src="/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/semantic/semantic.min.js" type="text/javascript"></script>
-    <script src="/plugins/jquery-steps/jquery.steps.min.js" type="text/javascript"></script>
+    <script src="/plugins/landingpage/datatables.min.js" type="text/javascript"></script>
     <script src = "/js/landingpage.js" type = "text/javascript"></script>
     <script type="text/javascript">
-    urlfloor="{{route("buildings.storefloor")}}";
+    urlUnits ="{{route("data.units")}}";
     </script>
   </body>
 </html>

@@ -12,6 +12,7 @@
 */
 Route::get('/','LandingPageController@index');
 Route::view('testing-grounds','test');
+Route::get('testing-grounds/data','customController@getUnits')->name('data.units');
 Route::get('me',function(){
 	if(Auth::user()->type=='admin'){
 		return redirect('admin/dashboard');

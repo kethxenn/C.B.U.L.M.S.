@@ -6,7 +6,12 @@ var backButtonFormat = '<i class="angle double left icon"></i>Back';
 var step = 1;
 var max = 3;
 $(document).ready(function(){
-	
+	$.ajaxSetup(
+	  {
+	    headers: {
+	      'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+	    }
+	  })
 	$("#test").click(function(){
 		$('#modal').modal({
         closable: false,
@@ -22,7 +27,32 @@ $(document).ready(function(){
 		handleStep(false);
 		return false;
 	})
+	table = $('#table-units').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: urlUnits,
+        columns: [
+        {data: 'description', name: 'description',title:'Building',class:'center aligned'},
+	    {data: 'floor_number', name: 'number',title:'Floor',class:'center aligned'},
+	    {data: 'type', name: 'units.type',title:'Unit Type',class:'center aligned'},
+	    {data: 'size', name:'size',title:'Size',class:'center aligned'},
+	    {data: 'price',name:'price',title:'Price',class:'center aligned'},
+	    {data: 'action', orderable: false, searchable: false,class:'center aligned'}
+        ]
+    });
+    $("body").on("click",".button-details", function(){
+    	console.log($(this).attr('data-value'));
+    	console.log('test');
+    });
 	$('.dropdown').dropdown();
+	$('#address-select')
+	  .dropdown({
+	    apiSettings: {
+	      // this url parses query server side and returns filtered results
+	      url: '//api.semantic-ui.com/tags/{query}'
+	    },
+	  })
+	;
 	$('.ui.checkbox').checkbox();
 	$('#form2').form({
     fields: {
