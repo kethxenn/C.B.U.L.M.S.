@@ -31,10 +31,11 @@ $(document).ready(function(){
         processing: true,
         serverSide: true,
         ajax: urlUnits,
+        scrollY:'50vh',
         columns: [
         {data: 'description', name: 'description',title:'Building',class:'center aligned'},
-	    {data: 'floor_number', name: 'number',title:'Floor',class:'center aligned'},
-	    {data: 'type', name: 'units.type',title:'Unit Type',class:'center aligned'},
+	    {data: 'floor_number', name: 'floor_number',title:'Floor',class:'center aligned'},
+	    {data: 'type', name: 'type',title:'Unit Type',class:'center aligned'},
 	    {data: 'size', name:'size',title:'Size',class:'center aligned'},
 	    {data: 'price',name:'price',title:'Price',class:'center aligned'},
 	    {data: 'action', orderable: false, searchable: false,class:'center aligned'}

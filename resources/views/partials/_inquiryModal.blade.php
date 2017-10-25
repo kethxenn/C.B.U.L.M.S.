@@ -25,7 +25,6 @@
   <div class="scrollable content">
     <div id = 'container1'>
       <form id="aFormWizard" class = 'ui form' id ='form1'>
-        <h3>form 1</h3>
         <section>
           <div class="ui container">
             <table id = 'table-units' class ='ui stacked fluid compact table' cellspacing="0" width="100%">

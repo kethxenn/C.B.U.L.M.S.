@@ -196,9 +196,9 @@ class customController extends Controller
 	public function getUnits()
     {
       $result=DB::table("units")
+      ->select(DB::Raw('Coalesce(price * units.size,1) as price,buildings.description as description,floors.number as floor_number,units.code as unit_code,units.type as type,units.size,units.id as id'))
       ->where('is_used',0)
-      ->where('is_active',1)
-      ->select(DB::Raw('Coalesce(price * units.size,1) as price,buildings.description as description,floors.number as floor_number,units.code as unit_code,units.type,units.size,units.id as id'))
+      ->where('units.is_active',1)
       ->join("floors","units.floor_id","floors.id")
       ->join("buildings","floors.building_id","buildings.id")
       ->join("building_types","buildings.building_type_id","building_types.id")
