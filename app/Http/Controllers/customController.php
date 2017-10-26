@@ -209,7 +209,7 @@ class customController extends Controller
       return Datatables::of($result)
       ->addColumn('action', function ($data) {
         return '<button class="ui right labeled icon blue button button-details" type="button" data-value="'.$data->id.'"><i class="right arrow icon"></i>See Details</button>
-        	<button class="ui right labeled icon green button button-add" type="button" data-value="'.$data->id.'"><i class="shop icon"></i>Add to cart</button>';
+        	<button class="ui right labeled icon green button button-add" type="button" data-value="'.$data->id.'"><i class="shop icon"></i>Select</button>';
       })
       ->editColumn('size', function ($data) {
         return "$data->size sqm";

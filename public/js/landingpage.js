@@ -105,15 +105,26 @@ $(document).ready(function () {
     });
     table = $('#table-units').DataTable({
         ajax: urlUnits,
+        scrollCollapse: true,
         scrollY: '50vh',
-        columns: [{ data: 'description', name: 'description', title: 'Building', class: 'center aligned' }, { data: 'floor_number', name: 'floor_number', title: 'Floor', class: 'center aligned' }, { data: 'type', name: 'type', title: 'Unit Type', class: 'center aligned' }, { data: 'size', name: 'size', title: 'Size', class: 'center aligned' }, { data: 'price', name: 'price', title: 'Price', class: 'center aligned' }, { data: 'action', orderable: false, searchable: false, class: 'center aligned' }]
+        columns: [{ data: 'description', name: 'description', title: 'Building', class: 'center aligned' }, { data: 'floor_number', name: 'floor_number', title: 'Floor', class: 'center aligned' }, { data: 'type', name: 'type', title: 'Unit Type', class: 'center aligned' }, { data: 'size', name: 'size', title: 'Size', class: 'center aligned' }, { data: 'price', name: 'price', title: 'Price', class: 'center aligned' }, { data: 'action', orderable: false, searchable: false, class: 'center aligned', title: 'Actions' }]
     });
-    $("body").on("click", ".button-details", function () {
-        console.log($(this).attr('data-value'));
-        console.log('test');
+    $('#table-units tbody').on('click', '.button-details', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row(tr);
+
+        if (row.child.isShown()) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        } else {
+            // Open this row
+            row.child(formatdata(row.data())).show();
+            tr.addClass('shown');
+        }
     });
     $('#table-units tbody').on('click', '.button-add', function () {
-        $(this).html('test');
+        $(this).html('<i class="shop icon"></i>Deselect').removeClass('green').addClass('red');
         //var row = table.row( (this).closest('tr') );
         //table.cell(row, 5).data("B").draw();
         //console.log(row.data());
@@ -173,7 +184,11 @@ $(document).ready(function () {
         }
     });
 });
-
+function formatdata(d) {
+    // `d` is the original data object for the row
+    // d.name
+    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' + '<tr>' + '<td>Full name:</td>' + '<td>' + 'test' + '</td>' + '</tr>' + '<tr>' + '<td>Extension number:</td>' + '<td>' + 'test' + '</td>' + '</tr>' + '<tr>' + '<td>Extra info:</td>' + '<td>And any further details here (images etc)...</td>' + '</tr>' + '</table>';
+}
 function handleStep(isForward) {
     if (step >= max && isForward) {
         //submit logic
