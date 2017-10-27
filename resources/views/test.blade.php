@@ -140,6 +140,8 @@
     <script src = "/js/landingpage.js" type = "text/javascript"></script>
     <script type="text/javascript">
     urlUnits ="{{route("data.units")}}";
+    urlUnitsFrom ="{{route("custom.getUnitsFrom")}}";
+    imgDir='{{ asset('images/units/')}}';
     </script>
   </body>
 </html>

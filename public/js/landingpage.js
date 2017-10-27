@@ -135,15 +135,15 @@ $(document).ready(function () {
     });
     $('#table-units tbody').on('click', '.button-toggle', function () {
         var tr = $(this).closest('tr');
-        var id = $(this).attr('data-id');
-        var index = unitsSelected.indexOf(id);
+        var row = table.row(tr).data();
+        var index = unitsSelected.indexOf(row);
         if (index > -1) {
             //Unit removed
             unitsSelected.splice(index, 1);
             $(this).html('<i class="shop icon"></i>Select').removeClass('red').addClass('green');
         } else {
             //Unit selected
-            unitsSelected.push(id);
+            unitsSelected.push(row);
             $(this).html('<i class="shop icon"></i>Deselect').removeClass('green').addClass('red');
         }
         console.log(unitsSelected);
@@ -176,6 +176,13 @@ $(document).ready(function () {
                     prompt: 'Please enter a valid email'
                 }]
             },
+            contact_num: {
+                identifier: 'contact-num',
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Please enter your contact number'
+                }]
+            },
             gender: {
                 identifier: 'gender',
                 rules: [{
@@ -204,7 +211,7 @@ $(document).ready(function () {
 function formatdata(d) {
     // `d` is the original data object for the row
     // d.name
-    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' + '<tr>' + '<td>Full name:</td>' + '<td>' + 'test' + '</td>' + '</tr>' + '<tr>' + '<td>Extension number:</td>' + '<td>' + 'test' + '</td>' + '</tr>' + '<tr>' + '<td>Extra info:</td>' + '<td>And any further details here (images etc)...</td>' + '</tr>' + '</table>';
+    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' + '<tr>' + '<td>Full name:</td>' + '<td>' + '<img src=' + imgDir + '/' + d.picture + '>' + '</td>' + '</tr>' + '<tr>' + '<td>Extension number:</td>' + '<td>' + 'test' + '</td>' + '</tr>' + '<tr>' + '<td>Extra info:</td>' + '<td>And any further details here (images etc)...</td>' + '</tr>' + '</table>';
 }
 
 function handleStep(isForward) {
@@ -236,6 +243,11 @@ function handleStep(isForward) {
             step--;
         }
         if (step == max) {
+            //end of form
+            var formData = $('#form2').serializeArray();
+            $("#table-details").html(formData.map(setInfo));
+
+            console.log(formData);
             document.getElementById('btnNext').innerHTML = submitButtonFormat;
         } else {
             document.getElementById('btnNext').innerHTML = nextButtonFormat;
@@ -256,6 +268,10 @@ function handleStep(isForward) {
         }
         document.getElementById("step" + step).className = "active step";
         document.getElementById("container" + step).style.display = "block";
+    }
+    function setInfo(item, index) {
+        //TODO fix output
+        return '<tr><td>' + item.name + '</td><td>' + item.value + '</td></tr>';
     }
 }
 

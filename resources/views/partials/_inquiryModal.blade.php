@@ -10,8 +10,8 @@
       </div>
       <div class="step" id='step2'>
         <div class="content">
-          <div class="title">Contact Info</div>
-          <div class="description">Enter contact information</div>
+          <div class="title">Personal Info</div>
+          <div class="description">Enter personal information</div>
         </div>
       </div>
       <div class="step" id='step3'>
@@ -55,10 +55,14 @@
             <input placeholder="Last Name" name="last-name" type="text">
           </div>
         </div>
-        <div class="two fields">
-          <div class="twelve wide required field">
+        <div class="three fields">
+          <div class="eight wide required field">
             <label>Email</label>
             <input placeholder="Email Address" name="email" type="text">
+          </div>
+          <div class="four wide required field">
+            <label>Contact #</label>
+            <input placeholder="Contact #" name="contact-num" type="text">
           </div>
           <div class="four wide required field">
             <label>Gender</label>
@@ -90,27 +94,93 @@
       <form id="aFormWizard" class = 'ui form' id= 'form3'>
         <h3>form 3</h3>
         <section>
-          <div class="fields">
-            <div class="seven wide field">
-              <label>E-mail</label>
-              <input type="text" name="email">
-            </div>
-            <div class="five wide field">
-              <label>Additional E-mail</label>
-              <input type="text" name="cc-email">
-            </div>
-            <div class="four wide field">
-              <label>Gender</label>
-              <div class="ui selection dropdown">
-                <input type="hidden" name="gender">
-                <div class="default text">Gender</div>
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                  <div class="item" data-value="1">Male</div>
-                  <div class="item" data-value="0">Female</div>
+          <div class="ui two column divided centered grid">
+            <div class = "row">
+              <div class="column">
+                <h4 class="ui horizontal divider header">
+                <i class="bar chart icon"></i>
+                Personal Info
+                </h4>
+                <table class="ui definition table" id = 'table-details'>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+              <div class="column">
+                <div class="ui link cards" id = 'list-units'>
+                  <div class="card">
+                    <div class="image">
+                      <img src="/images/avatar2/large/matthew.png">
+                    </div>
+                    <div class="content">
+                      <div class="header">Matt Giampietro</div>
+                      <div class="meta">
+                        <a>Friends</a>
+                      </div>
+                      <div class="description">
+                        Matthew is an interior designer living in New York.
+                      </div>
+                    </div>
+                    <div class="extra content">
+                      <span class="right floated">
+                        Joined in 2013
+                      </span>
+                      <span>
+                        <i class="user icon"></i>
+                        75 Friends
+                      </span>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="image">
+                      <img src="/images/avatar2/large/molly.png">
+                    </div>
+                    <div class="content">
+                      <div class="header">Molly</div>
+                      <div class="meta">
+                        <span class="date">Coworker</span>
+                      </div>
+                      <div class="description">
+                        Molly is a personal assistant living in Paris.
+                      </div>
+                    </div>
+                    <div class="extra content">
+                      <span class="right floated">
+                        Joined in 2011
+                      </span>
+                      <span>
+                        <i class="user icon"></i>
+                        35 Friends
+                      </span>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="image">
+                      <img src="/images/avatar2/large/elyse.png">
+                    </div>
+                    <div class="content">
+                      <div class="header">Elyse</div>
+                      <div class="meta">
+                        <a>Coworker</a>
+                      </div>
+                      <div class="description">
+                        Elyse is a copywriter working in New York.
+                      </div>
+                    </div>
+                    <div class="extra content">
+                      <span class="right floated">
+                        Joined in 2014
+                      </span>
+                      <span>
+                        <i class="user icon"></i>
+                        151 Friends
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            
           </div>
         </section>
       </form>

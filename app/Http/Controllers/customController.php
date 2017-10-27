@@ -196,7 +196,7 @@ class customController extends Controller
 	public function getUnits()
     {
       $result=DB::table("units")
-      ->select(DB::Raw('Coalesce(price * units.size,1) as price,buildings.description as description,floors.number as floor_number,units.code as unit_code,units.type as type,units.size,units.id as id'))
+      ->select(DB::Raw('Coalesce(price * units.size,1) as price,buildings.description as description,floors.number as floor_number,units.code as unit_code,units.type as type,units.size,units.id as id,units.picture as picture'))
       ->where('is_used',0)
       ->where('units.is_active',1)
       ->join("floors","units.floor_id","floors.id")
@@ -229,6 +229,12 @@ class customController extends Controller
       })
       ->rawColumns(['is_active','action'])
       ->make(true);
+    }
+    public function getUnitsFrom(Request $request){
+    	$result = DB::table('units')
+    	->whereIn('id',$request->ids)
+    	->get();
+    	return response()->json($result);
     }
 }
 
