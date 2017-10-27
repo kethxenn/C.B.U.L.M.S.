@@ -92,8 +92,10 @@ $(document).ready(function () {
     $("#test").click(function () {
         $('#modal').modal({
             closable: false,
-            observeChanges: true
+            observeChanges: true,
+            autofocus: false
         }).modal('show').modal('refresh');
+        table.columns.adjust().draw();
     });
     $('#btnNext').click(function (e) {
         e.preventDefault();
@@ -105,6 +107,10 @@ $(document).ready(function () {
         return false;
     });
     table = $('#table-units').DataTable({
+
+        initComplete: function initComplete(settings, json) {
+            table.columns.adjust().draw();
+        },
         ajax: urlUnits,
         scrollCollapse: true,
         scrollY: '50vh',
@@ -193,7 +199,6 @@ $(document).ready(function () {
             }
         }
     });
-    table.columns.adjust().draw();
 });
 
 function formatdata(d) {
