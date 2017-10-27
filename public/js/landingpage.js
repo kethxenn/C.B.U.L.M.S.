@@ -82,6 +82,7 @@ var cancelButtonFormat = '<i class="remove icon"></i>Cancel';
 var backButtonFormat = '<i class="angle double left icon"></i>Back';
 var step = 1;
 var max = 3;
+var unitsSelected = [];
 $(document).ready(function () {
     $.ajaxSetup({
         headers: {
@@ -107,6 +108,7 @@ $(document).ready(function () {
         ajax: urlUnits,
         scrollCollapse: true,
         scrollY: '50vh',
+        fixedHeader: true,
         columns: [{ data: 'description', name: 'description', title: 'Building', class: 'center aligned' }, { data: 'floor_number', name: 'floor_number', title: 'Floor', class: 'center aligned' }, { data: 'type', name: 'type', title: 'Unit Type', class: 'center aligned' }, { data: 'size', name: 'size', title: 'Size', class: 'center aligned' }, { data: 'price', name: 'price', title: 'Price', class: 'center aligned' }, { data: 'action', orderable: false, searchable: false, class: 'center aligned', title: 'Actions' }]
     });
     $('#table-units tbody').on('click', '.button-details', function () {
@@ -117,25 +119,33 @@ $(document).ready(function () {
             // This row is already open - close it
             row.child.hide();
             tr.removeClass('shown');
+            $(this).html('<i class="right arrow icon"></i>See Details').removeClass('red').addClass('blue');
         } else {
             // Open this row
             row.child(formatdata(row.data())).show();
             tr.addClass('shown');
+            $(this).html('<i class="left arrow icon"></i>Hide Details').removeClass('blue').addClass('red');
         }
     });
-    $('#table-units tbody').on('click', '.button-add', function () {
-        $(this).html('<i class="shop icon"></i>Deselect').removeClass('green').addClass('red');
+    $('#table-units tbody').on('click', '.button-toggle', function () {
+        var tr = $(this).closest('tr');
+        var id = $(this).attr('data-id');
+        var index = unitsSelected.indexOf(id);
+        if (index > -1) {
+            //Unit removed
+            unitsSelected.splice(index, 1);
+            $(this).html('<i class="shop icon"></i>Select').removeClass('red').addClass('green');
+        } else {
+            //Unit selected
+            unitsSelected.push(id);
+            $(this).html('<i class="shop icon"></i>Deselect').removeClass('green').addClass('red');
+        }
+        console.log(unitsSelected);
         //var row = table.row( (this).closest('tr') );
         //table.cell(row, 5).data("B").draw();
         //console.log(row.data());
     });
     $('.dropdown').dropdown();
-    $('#address-select').dropdown({
-        apiSettings: {
-            // this url parses query server side and returns filtered results
-            url: '//api.semantic-ui.com/tags/{query}'
-        }
-    });
     $('.ui.checkbox').checkbox();
     $('#form2').form({
         fields: {
@@ -183,12 +193,15 @@ $(document).ready(function () {
             }
         }
     });
+    table.columns.adjust().draw();
 });
+
 function formatdata(d) {
     // `d` is the original data object for the row
     // d.name
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' + '<tr>' + '<td>Full name:</td>' + '<td>' + 'test' + '</td>' + '</tr>' + '<tr>' + '<td>Extension number:</td>' + '<td>' + 'test' + '</td>' + '</tr>' + '<tr>' + '<td>Extra info:</td>' + '<td>And any further details here (images etc)...</td>' + '</tr>' + '</table>';
 }
+
 function handleStep(isForward) {
     if (step >= max && isForward) {
         //submit logic
