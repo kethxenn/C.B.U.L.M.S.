@@ -145,7 +145,7 @@ function formatdata(d) {
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
         '<tr>' +
         '<td>Full name:</td>' +
-        '<td>' + '<img src='+imgDir+'/'+d.picture+'>' + '</td>' +
+        '<td>' + '<img src=images/units/'+d.picture+'>' + '</td>' +
         '</tr>' +
         '<tr>' +
         '<td>Extension number:</td>' +
@@ -191,6 +191,7 @@ function handleStep(isForward) {
         	//end of form
         	var formData = $('#form2').serializeArray();
         	$("#table-details").html(formData.map(setInfo));
+        	setUnitInfo();
         	
         	console.log(formData);
             document.getElementById('btnNext').innerHTML = submitButtonFormat;
@@ -218,6 +219,15 @@ function handleStep(isForward) {
     	//TODO fix output
     	return '<tr><td>'+item.name+'</td><td>'+item.value+'</td></tr>';
     }
-
+    function setUnitInfo(){
+    	var daddy = "";
+    	for (var i = 0; i < unitsSelected.length; i++) {
+    		unitsSelected[i]
+    		daddy+='<div class="card"><div class="image">'
+                     +'<img src="images/units/'+unitsSelected[i].picture+'">'
+                    +'</div><div class="content"><div class="header">Matt Giampietro</div><div class="meta"><a>Friends</a></div><div class="description">Matthew is an interior designer living in New York.</div></div><div class="extra content"><span class="right floated">Joined in 2013</span><span><i class="user icon"></i>75 Friends</span></div></div>';
+    	}
+    	$("#unit-details").html(daddy);
+    }
 
 }
